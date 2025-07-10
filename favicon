@@ -1,0 +1,8 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Paket Dieng Logo">
+  <!-- Buku terbuka -->
+  <path d="M16 12H32L40 20H48V44H16V12Z" fill="#2A4B7C" stroke="#A2A9B1" stroke-width="2"></path>
+  <!-- Garis horizontal menyerupai teks -->
+  <line x1="20" y1="28" x2="44" y2="28" stroke="#A2A9B1" stroke-width="1"></line>
+  <line x1="20" y1="36" x2="44" y2="36" stroke="#A2A9B1" stroke-width="1"></line>
+  <line x1="20" y1="44" x2="36" y2="44" stroke="#A2A9B1" stroke-width="1"></line>
+</svg>
