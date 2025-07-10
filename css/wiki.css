@@ -161,3 +161,8 @@ ul, ol {
   .mw-title { font-size: 1.13em; }
   th, td { padding: 0.54em 0.5em; font-size: 0.97em;}
 }
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* (atau sesuai style wiki.css) */
+}
