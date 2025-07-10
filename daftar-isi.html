@@ -1,0 +1,39 @@
+import os
+
+root = '.'  # Jalankan di folder root repo
+exclude = ['header.html', 'footer.html', '404.html']  # Daftar file yang tidak ingin dimunculkan
+
+html_files = []
+for folder, _, files in os.walk(root):
+    for file in files:
+        if file.endswith('.html') and file not in exclude and not file.startswith('.'):
+            path = os.path.join(folder, file).replace('\\', '/')
+            html_files.append(path.lstrip('./'))
+
+html_files.sort()
+
+def ambil_judul(file_path):
+    try:
+        with open(file_path, encoding="utf-8") as f:
+            for line in f:
+                if "<title>" in line:
+                    return line.split("<title>")[1].split("</title>")[0].strip()
+    except Exception:
+        pass
+    return file_path.replace('.html', '').replace('-', ' ').capitalize()
+
+with open('daftar-isi.html', 'w', encoding='utf-8') as f:
+    f.write('<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><title>Daftar Isi Situs</title>')
+    f.write('<link rel="stylesheet" href="css/wiki.css"></head><body>')
+    f.write('<div id="mw-header"></div>')
+    f.write('<article class="mw-body">')
+    f.write('<h1 class="mw-title">Daftar Isi Situs</h1>')
+    f.write('<ul>')
+    for path in html_files:
+        judul = ambil_judul(path)
+        f.write(f'<li><a href="{path}">{judul}</a></li>')
+    f.write('</ul></article>')
+    f.write('<div id="mw-footer"></div>')
+    f.write('<script>fetch("header.html").then(r=>r.text()).then(t=>document.getElementById("mw-header").outerHTML = t);fetch("footer.html").then(r=>r.text()).then(t=>document.getElementById("mw-footer").outerHTML = t);</script>')
+    f.write('</body></html>')
+print("✅ Daftar isi otomatis sudah dibuat: daftar-isi.html")
